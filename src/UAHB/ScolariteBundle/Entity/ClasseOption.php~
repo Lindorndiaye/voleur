@@ -1,0 +1,62 @@
+<?php
+
+namespace UAHB\ScolariteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ClasseOption
+ *
+ * @ORM\Table(name="classe_option")
+ * @ORM\Entity(repositoryClass="UAHB\ScolariteBundle\Repository\ClasseOptionRepository")
+ */
+class ClasseOption
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=30)
+     */
+    private $libelle;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UAHB\ScolariteBundle\Entity\Classe", inversedBy="classeOptions")
+     * @ORM\JoinColumn(nullable=false)
+    */
+    private $classe;
+
+    /**
+     * @ORM\OneToMany(targetEntity="UAHB\ScolariteBundle\Entity\Inscription", mappedBy="classeOption")
+     * @ORM\JoinColumn(nullable=false)
+    */
+    private $inscriptions; 
+    
+    /**
+     * @ORM\OneToMany(targetEntity="UAHB\ScolariteBundle\Entity\UniteEnseignement", mappedBy="classeOption")
+     * @ORM\JoinColumn(nullable=false)
+    */
+    private $uniteenseignements; 
+
+
+    
+}

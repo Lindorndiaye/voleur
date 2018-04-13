@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br/><br/><br/><br/><br/><br/>
+    
+    <div class="container">
+        <span class="label label-danger row col-sm-12" style="margin-left: auto; height:30px;font-size:20px">{{message}}</span><br/><br/>
+        <fieldset class="cadre">
+            <legend class="legende">Enrégistrement d'une classe d'option</legend>
+        <div class="form-row">
+                <div class="form-group row">
+                <form method="post" name="form2">
+                    <div class="form-group col-sm-12">
+                        {{ form_widget(formClasseOption.classe,{'attr':{'class':'form-control','placeholder':'Selectionner la classe'}}) }}
+                    </div>
+                    <div class="form-group col-sm-12">
+                        {{ form_widget(formClasseOption.libelle,{'attr':{'class':'form-control','placeholder':'Saisir la classe d\'option'}}) }}
+                    </div>  
+                    
+                    <div class="form-group col-sm-12">
+                        <input type="submit" name="validerDept" class="form-control btn btn-primary" value="Enregistrer"/>
+                    </div>
+                <form>
+                </div>
+                <div class="count">
+                Nombre de classes(s) d'option trouvé(s) : {{ classeOptions.getTotalItemCount }}
+                </div>
+                <table  class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Libellé Classe d'option</th>
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for clo in classeOptions %}
+                                        <tr>
+                                            <td style="width:70%"><b>{{ clo.libelle }}</b></td>
+                                            <td style="width:15%"><a href="{{ path('uahb_scolarite_admin_editclasseoption', {'action':'edit','id': clo.id}) }}" class="btn btn-primary" role="button">Editer</a></td>
+                                            <td style="width:15%"><a href="{{ path('uahb_scolarite_admin_editclasseoption', {'action':'del','id': clo.id}) }}" class="btn btn-primary" role="button">Supprimer</a></td>
+                                        </tr>     
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="2">Aucune classe d'option n'a été trouvée</td>
+                                        </tr> 
+                                    {% endfor %}
+                                </tbody>   
+                </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(classeOptions) }}
+                </div>
+            </div>
+    </fieldset>
+    </div>
+
+      
+{% endblock%}

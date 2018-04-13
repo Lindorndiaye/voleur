@@ -1,0 +1,7 @@
+uahb_scolarite_homepage:
+    path:     /
+    defaults: { _controller: UAHBScolariteBundle:Default:index }
+
+uahb_scolarite_admin:
+    resource: "@UAHBScolariteBundle/Controller/AdminController.php"
+    type:     annotation

@@ -1,0 +1,151 @@
+{% extends "base.html.twig" %}
+
+ {% block stylesheet %}
+{{parent()}}
+<link rel="shortcut icon" href="{{ asset('assets/images/favicon_1.ico')}}">
+
+    <!--calendar css-->
+    <link href="{{ asset('assets/plugins/fullcalendar/dist/fullcalendar.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/select2/dist/css/select2.css')}}" rel="stylesheet" type="text/css">
+
+   
+{% endblock %}
+
+
+{% block body %}
+
+
+
+    
+   
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container">
+
+                    <!-- Page-Title -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2 class="pull-left page-title">Paramétrage des classes</h2>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="row">
+
+                                
+                                <!-- end col -->
+
+                                <div class="col-md-0">
+                                    <div class="widget">
+                                        <div class="widget-body">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <fieldset class="cadre">
+                                                        <legend class="legende">Enrégistrement d'une unité d'enseignement</legend>
+                                                        <div class="form-row">
+                                                            <div class="form-group row">
+                                                                <div class="form-group col-sm-12">
+                                                                        <div class="form-group col-sm-4">
+                                                                        
+                                                                        </div>
+                                                                        <div class="form-group col-sm-4">
+                                                                        <input type="button" name="addmatiere" id="addmatiere" class="form-control btn btn-primary" value="Ajouter une matière"/>
+                                                                        </div>
+                                                                        <div class="form-group col-sm-4">
+                                                                        <input type="button" name="removematiere" id="removematiere" class="form-control btn btn-primary" value="Supprimer une matière"/>
+                                                                        </div>
+                                                                </div>
+                                                                <form method="post" name="form2">
+                                                                    <div class="form-group col-sm-12">
+                                                                        <select class="col-sm-12" name="fil" id="fil">
+                                                                        <option value="0">----selectionner la filière---</option>
+                                                                        {% for fil in filieres %}
+                                                                            <option value="{{fil.id}}">{{fil.libelle}}</option>
+                                                                        {% endfor %}
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group col-sm-12">
+                                                                        <select class="col-sm-12" name="uahb_scolaritebundle_uniteenseignement[classe]" id="classe">
+                                                                        <option value="0">----selectionner la classe---</option>
+                                                                        </select>                                                                    </div>
+                                                                    <div class="form-group col-sm-12">
+                                                                        <input type="text" placeholder="saisir le nom de l'unite d'ensegnement" required name="uahb_scolaritebundle_uniteenseignement[libelle]" class="form-control"/>
+                                                                    </div>
+                                                                    <div class="form-group col-sm-12">
+                                                                        <input type="submit" name="valider" class="form-control btn btn-primary" value="Enregistrer"/>
+                                                                    </div>
+                                                                </form> 
+                                                            </div>
+                                                        </div>   
+                                                    </fieldset>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end col-->
+                            </div>
+                            <!-- end row -->
+
+                            
+                        </div>
+                        <!-- end col-12 -->
+                    </div>
+                    <!-- end row -->
+
+                </div>
+                <!-- container -->
+
+            </div>
+            <!-- content -->
+
+            <footer class="footer text-right">
+                2016 © Moltran.
+            </footer>
+
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+
+
+        
+    </div>
+    <!-- END wrapper -->
+
+  
+
+
+{% endblock %}
+ {% block scripts %}
+{{parent()}}
+  
+
+   
+
+    <script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+    <script src="{{ asset('assets/plugins/select2/dist/js/select2.min.js')}}" type="text/javascript"></script>
+
+    <!-- BEGIN PAGE SCRIPTS -->
+    <script src="{{ asset('assets/plugins/moment/moment.js')}}"></script>
+    <script src="{{ asset('assets/plugins/fullcalendar/dist/fullcalendar.min.js')}}"></script>
+    <script src="{{ asset('assets/pages/jquery.fullcalendar.js')}}"></script>
+
+    <script src="{{ asset('js/app.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#fil').change(function(){
+                loadSelect('classeParFiliere/'+$('#fil').val(), '#fil',  '#classe', '-------------selectionner la classe------------');
+            });
+        });
+    </script>
+
+
+{% endblock %} 

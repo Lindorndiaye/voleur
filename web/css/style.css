@@ -1,0 +1,48 @@
+.cadre {
+    width: 100%;
+    margin:auto;
+    font-family: sans-serif;
+    border: 2px solid green;
+    background: white;
+    border-radius: 5px;
+    padding: 15px;
+    padding-bottom: 30px;
+}
+
+.legende {
+    background: green;
+    color: #fff;
+    padding: 2px 5px ;
+    font-size: 32px;
+    border-radius: 5px;
+    box-shadow: 0 0 0 5px #ddd;
+    margin-left: 20px;
+}
+
+.cadre1 {
+    width: auto;
+    margin:auto;
+    font-family: sans-serif;
+    border: 2px solid green;
+    background: white;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.legende1 {
+    background: green;
+    color: #000;
+    font-size: 32px;
+    border-radius: 5px;
+    box-shadow: 0 0 0 0px #ddd;
+    margin-left: auto;
+}
+
+.onglet{
+    background: green;
+    color: #fff;
+}
+
+label{
+    color: black;
+}

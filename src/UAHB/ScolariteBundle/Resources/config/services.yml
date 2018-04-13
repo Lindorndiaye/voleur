@@ -1,0 +1,4 @@
+services:
+#    uahb_scolarite.example:
+#        class: UAHB\ScolariteBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,0 +1,84 @@
+<?php
+
+namespace UAHB\ScolariteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Telephone
+ *
+ * @ORM\Table(name="telephone")
+ * @ORM\Entity(repositoryClass="UAHB\ScolariteBundle\Repository\TelephoneRepository")
+ */
+class Telephone
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=20)
+     */
+    private $libelle;
+
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="UAHB\ScolariteBundle\Entity\Personne", inversedBy="telephones")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $etudiant;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set libelle
+     *
+     * @param string $libelle
+     *
+     * @return Telephone
+     */
+    public function setLibelle($libelle)
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    /**
+     * Get libelle
+     *
+     * @return string
+     */
+    public function getLibelle()
+    {
+        return $this->libelle;
+    }
+
+    
+
+    /**
+     * Get etudiant
+     *
+     * @return \UAHB\ScolariteBundle\Entity\Personne
+     */
+    public function getEtudiant()
+    {
+        return $this->etudiant;
+    }
+}
